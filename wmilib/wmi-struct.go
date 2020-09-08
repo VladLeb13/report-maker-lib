@@ -103,7 +103,7 @@ type Win32_NetworkAdapterConfiguration struct {
  */
 
 //Информация о ОС
-type wmi_os struct {
+type WMIOS struct {
 	os []Win32_OperatingSystem
 	cs []Win32_ComputerSystem
 }
@@ -123,7 +123,7 @@ type Win32_ComputerSystem struct {
 }
 
 //Информация о общих ресурсах
-type wmi_share struct {
+type WMIShare struct {
 	share []Win32_Share
 }
 
@@ -136,7 +136,7 @@ type Win32_Share struct {
 }
 
 //Информация о автозагрузке
-type wmi_startup struct {
+type WMIStartup struct {
 	startup []Win32_StartupCommand
 }
 
@@ -147,7 +147,7 @@ type Win32_StartupCommand struct {
 }
 
 //Информация о обновлениях
-type wmi_update struct {
+type WMIUpdate struct {
 	update []Win32_QuickFixEngineering
 }
 
@@ -162,7 +162,7 @@ type Win32_QuickFixEngineering struct {
 }
 
 //Информация о программах
-type wmi_programs struct {
+type WMIPrograms struct {
 	programs []Win32_Product
 }
 
@@ -185,8 +185,8 @@ type Win32_Product struct {
 *                          ос
  */
 
-// События ОС
-type wmi_event struct {
+//WMIEvent - События ОС
+type WMIEvent struct {
 	events []Win32_NTLogEvent
 }
 
@@ -198,6 +198,7 @@ type Win32_NTLogEvent struct {
 	ComputerName   string
 	Data           []uint8
 	SourceName     string
+	TimeWritten    string
 }
 
 /*
@@ -206,11 +207,12 @@ type Win32_NTLogEvent struct {
 *                производительности
  */
 
-type wmi_perfomance struct {
-	pref_disk    []Win32_PerfFormattedData_PerfDisk_PhysicalDisk
-	perf_proc    []Win32_PerfFormattedData_Counters_ProcessorInformation
-	perf_mem     []Win32_PerfFormattedData_PerfOS_Memory
-	perf_process []Win32_PerfFormattedData_PerfProc_Process
+//WMIPerfomance -  Данные о производительности
+type WMIPerfomance struct {
+	pref_disk      []Win32_PerfFormattedData_PerfDisk_PhysicalDisk
+	perf_processor []Win32_PerfFormattedData_Counters_ProcessorInformation
+	perf_mem       []Win32_PerfFormattedData_PerfOS_Memory
+	perf_process   []Win32_PerfFormattedData_PerfProc_Process
 }
 type Win32_PerfFormattedData_PerfDisk_PhysicalDisk struct {
 	PercentDiskTime       uint64
