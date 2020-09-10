@@ -5,17 +5,17 @@ import (
 	"log"
 	"testing"
 	"time"
+	"wmilib/hardware"
 )
 
 func TestGeneral(t *testing.T) {
 
-	ago := time.Now()
-	tGetCPU()
-	tGetHDD()
-	tGetMatherboard()
-	tGetRAM()
-	tGetNIC()
-	tGetVolume()
+	TestGetCPU(t)
+	TestGetHDD(t)
+	TestGetMatherboard(t)
+	TestGetRAM(t)
+	TestGetNIC(t)
+	TestGetVolume(t)
 
 	tGetOS()
 	tGetPrograms()
@@ -26,18 +26,17 @@ func TestGeneral(t *testing.T) {
 	tGetEvent()
 	tGetPerfomance()
 
-	fmt.Println(ago, time.Now())
 }
 
 func TestGeneralParalell(t *testing.T) {
 	ago := time.Now()
 	go func() {
-		tGetCPU()
-		tGetHDD()
-		tGetMatherboard()
-		tGetRAM()
-		tGetNIC()
-		tGetVolume()
+		TestGetCPU(t)
+		TestGetHDD(t)
+		TestGetMatherboard(t)
+		TestGetRAM(t)
+		TestGetNIC(t)
+		TestGetVolume(t)
 		fmt.Println(ago, time.Now())
 	}()
 
@@ -65,14 +64,22 @@ func TestGeneralParalell(t *testing.T) {
 
 }
 
-func tGetCPU() {
-	GetCPU()
+func TestGetCPU(t *testing.T) {
+	cpu := new(hardware.CPU)
+	cpu.Get()
+
+	for _, v := range cpu.Units {
+		fmt.Println(v.Caption)
+	}
+
 }
 
-func tGetMatherboard() {
-	baseboard := GetMotherboard()
+func TestGetMatherboard(t *testing.T) {
+	board := new(hardware.Board)
+	board.Get()
+
 	log.Println("===== baseboard =====")
-	for _, v := range baseboard.baseboard {
+	for _, v := range board.Сomponents {
 		log.Println("Manufacturer: ", v.Manufacturer)
 		log.Println("Model: ", v.Model)
 		log.Println("PartNumber: ", v.PartNumber)
@@ -81,7 +88,7 @@ func tGetMatherboard() {
 		log.Println("Version: ", v.Version)
 	}
 	log.Println("===== bios =====")
-	for _, v := range baseboard.bios {
+	for _, v := range board.Bios {
 		log.Println("Manufacturer: ", v.Manufacturer)
 		log.Println("Name: ", v.Name)
 		log.Println("SMBIOSBIOSVersion: ", v.SMBIOSBIOSVersion)
@@ -90,11 +97,12 @@ func tGetMatherboard() {
 
 }
 
-func tGetRAM() {
-	ram := GetRAM()
-	log.Println("===== ram =====")
+func TestGetRAM(t *testing.T) {
+	ram := new(hardware.RAM)
+	ram.Get()
 
-	for _, v := range ram.ram {
+	log.Println("===== ram =====")
+	for _, v := range ram.Units {
 		log.Println("Capacity: ", v.Capacity)
 		log.Println("DeviceLocator: ", v.DeviceLocator)
 		log.Println("Manufacturer: ", v.Manufacturer)
@@ -102,12 +110,12 @@ func tGetRAM() {
 	}
 }
 
-func tGetHDD() {
-	hdd := GetHDD()
+func TestGetHDD(t *testing.T) {
+	hdd := new(hardware.HDD)
+	hdd.Get()
 
 	log.Println("===== hdd =====")
-
-	for _, v := range hdd.hdd {
+	for _, v := range hdd.Units {
 		log.Println("InterfaceType: ", v.InterfaceType)
 		log.Println("Partitions: ", v.Partitions)
 		log.Println("SerialNumber: ", v.SerialNumber)
@@ -116,12 +124,12 @@ func tGetHDD() {
 	}
 }
 
-func tGetVolume() {
-	volume := GetVolume()
+func TestGetVolume(t *testing.T) {
+	volume := new(hardware.Volume)
+	volume.Get()
 
 	log.Println("===== volume  =====")
-
-	for _, v := range volume.volume {
+	for _, v := range volume.Partitions {
 		log.Println("===== volume  =====")
 		log.Println("Capacity: ", v.Capacity)
 		log.Println("FileSystem: ", v.FileSystem)
@@ -135,12 +143,12 @@ func tGetVolume() {
 
 }
 
-func tGetNIC() {
-	nic := GetNIC()
+func TestGetNIC(t *testing.T) {
+	nic := new(hardware.NIC)
+	nic.Get()
 
 	log.Println("===== nic  =====")
-
-	for _, v := range nic.nic {
+	for _, v := range nic.Units {
 		log.Println("===== nic  =====")
 		log.Println("Description: ", v.Description)
 		log.Println("IPAddress: ", v.IPAddress)
