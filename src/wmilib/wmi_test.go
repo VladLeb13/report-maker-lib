@@ -5,7 +5,10 @@ import (
 	"log"
 	"testing"
 	"time"
+	"wmilib/events"
 	"wmilib/hardware"
+	"wmilib/perfomance"
+	"wmilib/software"
 )
 
 func TestGeneral(t *testing.T) {
@@ -17,14 +20,14 @@ func TestGeneral(t *testing.T) {
 	TestGetNIC(t)
 	TestGetVolume(t)
 
-	tGetOS()
-	tGetPrograms()
-	tGetShare()
-	tGetStartup()
-	tGetUpdate()
+	TestGetOS(t)
+	TestGetPrograms(t)
+	TestGetShare(t)
+	TestGetStartup(t)
+	TestGetUpdate(t)
 
-	tGetEvent()
-	tGetPerfomance()
+	TestGetEvent(t)
+	TestGetPerfomance(t)
 
 }
 
@@ -41,21 +44,21 @@ func TestGeneralParalell(t *testing.T) {
 	}()
 
 	go func() {
-		tGetOS()
-		tGetPrograms()
-		tGetShare()
-		tGetStartup()
-		tGetUpdate()
+		TestGetOS(t)
+		TestGetPrograms(t)
+		TestGetShare(t)
+		TestGetStartup(t)
+		TestGetUpdate(t)
 		fmt.Println(ago, time.Now())
 	}()
 
 	go func() {
-		tGetEvent()
+		TestGetEvent(t)
 		fmt.Println(ago, time.Now())
 	}()
 
 	go func() {
-		tGetPerfomance()
+		TestGetPerfomance(t)
 		fmt.Println(ago, time.Now())
 	}()
 
@@ -167,14 +170,15 @@ func TestGetNIC(t *testing.T) {
  *
  */
 
-func tGetOS() {
-	info := GetOS()
+func TestGetOS(t *testing.T) {
+	os := new(software.OS)
+	os.Get()
 	log.Println("==== os ====")
-	for _, v := range info.cs {
+	for _, v := range os.SystemInfo {
 		fmt.Println("Domain: ", v.Domain)
 		fmt.Println("UserName: ", v.UserName)
 	}
-	for _, v := range info.os {
+	for _, v := range os.WindowsInfo {
 		fmt.Println("BuildNumber: ", v.BuildNumber)
 		fmt.Println("Caption :", v.Caption)
 		fmt.Println("InstallDate: ", v.InstallDate)
@@ -182,13 +186,13 @@ func tGetOS() {
 		fmt.Println("SerialNumber: ", v.SerialNumber)
 		fmt.Println("Version: ", v.Version)
 	}
-
 }
 
-func tGetShare() {
-	info := GetShare()
+func TestGetShare(t *testing.T) {
+	shared := new(software.Shared)
+	shared.Get()
 	log.Println("==== share ====")
-	for i, v := range info.share {
+	for i, v := range shared.Resource {
 		fmt.Println("==== share position - ", i)
 		fmt.Println("Caption: ", v.Caption)
 		fmt.Println("Description: ", v.Description)
@@ -198,21 +202,25 @@ func tGetShare() {
 	}
 }
 
-func tGetStartup() {
-	info := GetStartup()
+func TestGetStartup(t *testing.T) {
+	startup := new(software.Startup)
+	startup.Get()
 	log.Println("==== startup ====")
-	for i, v := range info.startup {
+	for i, v := range startup.Commands {
 		fmt.Println("==== startup position - ", i)
 		fmt.Println("Caption: ", v.Caption)
 		fmt.Println("Command: ", v.Command)
 		fmt.Println("User: ", v.User)
+		fmt.Println("Name: ", v.Name)
 	}
 }
 
-func tGetUpdate() {
-	info := GetUpdate()
+func TestGetUpdate(t *testing.T) {
+	updates := new(software.Updates)
+	updates.Get()
+
 	log.Println("==== update ====")
-	for i, v := range info.update {
+	for i, v := range updates.List {
 		fmt.Println("==== update position - ", i)
 		fmt.Println("Description: ", v.Description)
 		fmt.Println("FixComments: ", v.FixComments)
@@ -224,10 +232,11 @@ func tGetUpdate() {
 	}
 }
 
-func tGetPrograms() {
-	info := GetPrograms()
+func TestGetPrograms(t *testing.T) {
+	prog := new(software.Programs)
+	prog.Get()
 	log.Println("==== programs ====")
-	for i, v := range info.programs {
+	for i, v := range prog.List {
 		fmt.Println("==== programs position - ", i)
 		fmt.Println("Caption: ", v.Caption)
 		fmt.Println("Description: ", v.Description)
@@ -246,11 +255,13 @@ func tGetPrograms() {
  *			События системы
  *
  */
-func tGetEvent() {
-	evnt := GetEvent()
+func TestGetEvent(t *testing.T) {
+	events := new(events.Events)
+	events.Get()
+
 	log.Println("==== event ====")
-	for _, v := range evnt.events {
-		log.Println("==== event ====")
+	for _, v := range events.List {
+		fmt.Println("==== event ====")
 		fmt.Println("User: ", v.User)
 		fmt.Println("LogFile: ", v.LogFile)
 		fmt.Println("Message: ", v.Message)
@@ -269,34 +280,46 @@ func tGetEvent() {
  *
  */
 
-func tGetPerfomance() {
+func TestGetPerfomance(t *testing.T) {
 
-	perf := GetPerfomance()
+	perfRAM := new(perfomance.RAM)
+	perfRAM.Get()
+
 	log.Println("==== perf_mem ====")
-	for _, v := range perf.perf_mem {
+	for _, v := range perfRAM.Data {
 		fmt.Println(v.AvailableMBytes)            //доступно
 		fmt.Println(v.PercentCommittedBytesInUse) //процентов использованно
 	}
+
+	perfCPU := new(perfomance.CPU)
+	perfCPU.Get()
+	log.Println("==== perf_processor ====")
+	for _, v := range perfCPU.Data {
+		fmt.Println(v.PercentProcessorUtility) //исп проца
+		fmt.Println(v.ProcessorFrequency)
+		fmt.Println(v.PercentProcessorPerformance)
+	}
+
+	perfHDD := new(perfomance.HDD)
+	perfHDD.Get()
+	log.Println("==== pref_disk ====")
+	for _, v := range perfHDD.Data {
+		fmt.Println(v.PercentDiskTime)
+		fmt.Println(v.AvgDiskQueueLength)
+		fmt.Println(v.DiskReadBytesPersec)
+		fmt.Println(v.DiskWriteBytesPersec)
+	}
+
+	perfProc := new(perfomance.Process)
+	perfProc.Get()
+
 	log.Println("==== perf_process ====")
-	for _, v := range perf.perf_process {
+	for _, v := range perfProc.Data {
 		fmt.Println(v.Name)
 		fmt.Println(v.IDProcess)
 		fmt.Println(v.IOReadOperationsPersec)
 		fmt.Println(v.IOWriteOperationsPersec)
 		fmt.Println(v.PercentProcessorTime)
-	}
-	log.Println("==== perf_processor ====")
-	for _, v := range perf.perf_processor {
-		fmt.Println(v.PercentProcessorUtility) //исп проца
-		fmt.Println(v.ProcessorFrequency)
-		fmt.Println(v.PercentProcessorPerformance)
-	}
-	log.Println("==== pref_disk ====")
-	for _, v := range perf.pref_disk {
-		fmt.Println(v.PercentDiskTime)
-		fmt.Println(v.AvgDiskQueueLength)
-		fmt.Println(v.DiskReadBytesPersec)
-		fmt.Println(v.DiskWriteBytesPersec)
 	}
 
 }
