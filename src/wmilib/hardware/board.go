@@ -2,8 +2,7 @@ package hardware
 
 import (
 	"log"
-
-	"github.com/StackExchange/wmi"
+	"wmilib/tools"
 )
 
 type (
@@ -29,14 +28,11 @@ type (
 )
 
 func (board *Board) Get() {
-	queryStringСomponents := wmi.CreateQuery(&board.Сomponents, "")
-	if err := wmi.Query(queryStringСomponents, &board.Сomponents); err != nil {
+	if err := tools.ExecuteQuery(&board.Сomponents, ""); err != nil {
 		log.Fatal(err)
 	}
 
-	queryStringBios := wmi.CreateQuery(&board.Bios, "")
-	if err := wmi.Query(queryStringBios, &board.Bios); err != nil {
+	if err := tools.ExecuteQuery(&board.Bios, ""); err != nil {
 		log.Fatal(err)
 	}
-
 }

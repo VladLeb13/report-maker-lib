@@ -2,8 +2,7 @@ package perfomance
 
 import (
 	"log"
-
-	"github.com/StackExchange/wmi"
+	"wmilib/tools"
 )
 
 type (
@@ -17,8 +16,7 @@ type (
 )
 
 func (ram *RAM) Get() {
-	queryString := wmi.CreateQuery(&ram.Data, "")
-	if err := wmi.Query(queryString, &ram.Data); err != nil {
+	if err := tools.ExecuteQuery(&ram.Data, ""); err != nil {
 		log.Fatal(err)
 	}
 }

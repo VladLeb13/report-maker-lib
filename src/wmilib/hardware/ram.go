@@ -2,8 +2,7 @@ package hardware
 
 import (
 	"log"
-
-	"github.com/StackExchange/wmi"
+	"wmilib/tools"
 )
 
 type (
@@ -21,8 +20,7 @@ type (
 )
 
 func (ram *RAM) Get() {
-	queryString := wmi.CreateQuery(&ram.Units, "")
-	if err := wmi.Query(queryString, &ram.Units); err != nil {
+	if err := tools.ExecuteQuery(&ram.Units, ""); err != nil {
 		log.Fatal(err)
 	}
 }

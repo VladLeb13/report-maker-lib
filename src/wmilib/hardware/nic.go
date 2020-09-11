@@ -2,8 +2,7 @@ package hardware
 
 import (
 	"log"
-
-	"github.com/StackExchange/wmi"
+	"wmilib/tools"
 )
 
 type NIC struct {
@@ -20,8 +19,7 @@ type win32_NetworkAdapterConfiguration struct {
 }
 
 func (nic *NIC) Get() {
-	queryString := wmi.CreateQuery(&nic.Units, "")
-	if err := wmi.Query(queryString, &nic.Units); err != nil {
+	if err := tools.ExecuteQuery(&nic.Units, ""); err != nil {
 		log.Fatal(err)
 	}
 }

@@ -2,8 +2,7 @@ package software
 
 import (
 	"log"
-
-	"github.com/StackExchange/wmi"
+	"wmilib/tools"
 )
 
 type Startup struct {
@@ -18,8 +17,7 @@ type win32_StartupCommand struct {
 }
 
 func (startup *Startup) Get() {
-	queryString := wmi.CreateQuery(&startup.Commands, "")
-	if err := wmi.Query(queryString, &startup.Commands); err != nil {
+	if err := tools.ExecuteQuery(&startup.Commands, ""); err != nil {
 		log.Fatal(err)
 	}
 }

@@ -2,8 +2,7 @@ package software
 
 import (
 	"log"
-
-	"github.com/StackExchange/wmi"
+	"wmilib/tools"
 )
 
 type (
@@ -23,8 +22,7 @@ type (
 )
 
 func (updates *Updates) Get() {
-	queryString := wmi.CreateQuery(&updates.List, "")
-	if err := wmi.Query(queryString, &updates.List); err != nil {
+	if err := tools.ExecuteQuery(&updates.List, ""); err != nil {
 		log.Fatal(err)
 	}
 }

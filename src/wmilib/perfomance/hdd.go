@@ -2,8 +2,7 @@ package perfomance
 
 import (
 	"log"
-
-	"github.com/StackExchange/wmi"
+	"wmilib/tools"
 )
 
 type (
@@ -20,8 +19,7 @@ type (
 )
 
 func (hdd *HDD) Get() {
-	queryString := wmi.CreateQuery(&hdd.Data, "")
-	if err := wmi.Query(queryString, &hdd.Data); err != nil {
+	if err := tools.ExecuteQuery(&hdd.Data, ""); err != nil {
 		log.Fatal(err)
 	}
 }

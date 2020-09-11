@@ -2,8 +2,7 @@ package perfomance
 
 import (
 	"log"
-
-	"github.com/StackExchange/wmi"
+	"wmilib/tools"
 )
 
 type (
@@ -18,8 +17,7 @@ type (
 )
 
 func (cpu *CPU) Get() {
-	queryString := wmi.CreateQuery(&cpu.Data, "")
-	if err := wmi.Query(queryString, &cpu.Data); err != nil {
+	if err := tools.ExecuteQuery(&cpu.Data, ""); err != nil {
 		log.Fatal(err)
 	}
 }

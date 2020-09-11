@@ -2,8 +2,7 @@ package hardware
 
 import (
 	"log"
-
-	"github.com/StackExchange/wmi"
+	"wmilib/tools"
 )
 
 type (
@@ -20,8 +19,7 @@ type (
 )
 
 func (hdd *HDD) Get() {
-	queryString := wmi.CreateQuery(&hdd.Units, "")
-	if err := wmi.Query(queryString, &hdd.Units); err != nil {
+	if err := tools.ExecuteQuery(&hdd.Units, ""); err != nil {
 		log.Fatal(err)
 	}
 }

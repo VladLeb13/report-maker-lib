@@ -2,8 +2,7 @@ package software
 
 import (
 	"log"
-
-	"github.com/StackExchange/wmi"
+	"wmilib/tools"
 )
 
 type Programs struct {
@@ -23,8 +22,7 @@ type win32_Product struct {
 }
 
 func (prog *Programs) Get() {
-	queryString := wmi.CreateQuery(&prog.List, "")
-	if err := wmi.Query(queryString, &prog.List); err != nil {
+	if err := tools.ExecuteQuery(&prog.List, ""); err != nil {
 		log.Fatal(err)
 	}
 }

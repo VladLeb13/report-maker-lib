@@ -2,8 +2,7 @@ package hardware
 
 import (
 	"log"
-
-	"github.com/StackExchange/wmi"
+	"wmilib/tools"
 )
 
 type (
@@ -23,8 +22,7 @@ type (
 )
 
 func (cpu *CPU) Get() {
-	queryString := wmi.CreateQuery(&cpu.Units, "")
-	if err := wmi.Query(queryString, &cpu.Units); err != nil {
+	if err := tools.ExecuteQuery(&cpu.Units, ""); err != nil {
 		log.Fatal(err)
 	}
 }

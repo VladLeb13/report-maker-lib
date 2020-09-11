@@ -2,8 +2,7 @@ package software
 
 import (
 	"log"
-
-	"github.com/StackExchange/wmi"
+	"wmilib/tools"
 )
 
 type (
@@ -21,8 +20,7 @@ type (
 )
 
 func (shared *Shared) Get() {
-	queryString := wmi.CreateQuery(&shared.Resource, "")
-	if err := wmi.Query(queryString, &shared.Resource); err != nil {
+	if err := tools.ExecuteQuery(&shared.Resource, ""); err != nil {
 		log.Fatal(err)
 	}
 }

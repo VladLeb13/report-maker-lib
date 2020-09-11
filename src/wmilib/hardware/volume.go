@@ -2,8 +2,7 @@ package hardware
 
 import (
 	"log"
-
-	"github.com/StackExchange/wmi"
+	"wmilib/tools"
 )
 
 type Volume struct {
@@ -21,8 +20,7 @@ type win32_Volume struct {
 }
 
 func (volume *Volume) Get() {
-	queryString := wmi.CreateQuery(&volume.Partitions, "")
-	if err := wmi.Query(queryString, &volume.Partitions); err != nil {
+	if err := tools.ExecuteQuery(&volume.Partitions, ""); err != nil {
 		log.Fatal(err)
 	}
 }

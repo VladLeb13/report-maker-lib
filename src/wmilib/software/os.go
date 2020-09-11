@@ -2,8 +2,7 @@ package software
 
 import (
 	"log"
-
-	"github.com/StackExchange/wmi"
+	"wmilib/tools"
 )
 
 type (
@@ -28,13 +27,11 @@ type (
 )
 
 func (os *OS) Get() {
-	queryStringSystemInfo := wmi.CreateQuery(&os.SystemInfo, "")
-	if err := wmi.Query(queryStringSystemInfo, &os.SystemInfo); err != nil {
+	if err := tools.ExecuteQuery(&os.SystemInfo, ""); err != nil {
 		log.Fatal(err)
 	}
 
-	queryStringWindowsInfo := wmi.CreateQuery(&os.WindowsInfo, "")
-	if err := wmi.Query(queryStringWindowsInfo, &os.WindowsInfo); err != nil {
+	if err := tools.ExecuteQuery(&os.WindowsInfo, ""); err != nil {
 		log.Fatal(err)
 	}
 }

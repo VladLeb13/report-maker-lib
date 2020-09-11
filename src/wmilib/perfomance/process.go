@@ -2,8 +2,7 @@ package perfomance
 
 import (
 	"log"
-
-	"github.com/StackExchange/wmi"
+	"wmilib/tools"
 )
 
 type (
@@ -23,8 +22,7 @@ type (
 )
 
 func (proc *Process) Get() {
-	queryString := wmi.CreateQuery(&proc.Data, "")
-	if err := wmi.Query(queryString, &proc.Data); err != nil {
+	if err := tools.ExecuteQuery(&proc.Data, ""); err != nil {
 		log.Fatal(err)
 	}
 }

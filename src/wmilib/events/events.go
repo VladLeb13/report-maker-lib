@@ -4,8 +4,7 @@ import (
 	"log"
 	"strconv"
 	"time"
-
-	"github.com/StackExchange/wmi"
+	"wmilib/tools"
 )
 
 type (
@@ -26,13 +25,12 @@ type (
 )
 
 func (events *Events) Get() {
-	queryString := wmi.CreateQuery(&events.List, requestСondition())
-	if err := wmi.Query(queryString, &events.List); err != nil {
+	if err := tools.ExecuteQuery(&events.List, queryСondition()); err != nil {
 		log.Fatal(err)
 	}
 }
 
-func requestСondition() string {
+func queryСondition() string {
 	now := time.Now().UTC()
 	monthAgo, err := getMonthAgo(now)
 	if err != nil {
