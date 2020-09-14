@@ -5,10 +5,11 @@ import (
 	"log"
 	"testing"
 	"time"
-	"wmilib/events"
-	"wmilib/hardware"
-	"wmilib/perfomance"
-	"wmilib/software"
+
+	"github.com/VladLeb13/report-maker-lib/src/wmilib/events"
+	"github.com/VladLeb13/report-maker-lib/src/wmilib/hardware"
+	"github.com/VladLeb13/report-maker-lib/src/wmilib/perfomance"
+	"github.com/VladLeb13/report-maker-lib/src/wmilib/software"
 )
 
 func TestGeneral(t *testing.T) {

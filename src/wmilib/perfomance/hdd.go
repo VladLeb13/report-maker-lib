@@ -2,7 +2,8 @@ package perfomance
 
 import (
 	"log"
-	"wmilib/tools"
+
+	"github.com/VladLeb13/report-maker-lib/src/wmilib/tools"
 )
 
 type (

@@ -4,7 +4,8 @@ import (
 	"log"
 	"strconv"
 	"time"
-	"wmilib/tools"
+
+	"github.com/VladLeb13/report-maker-lib/src/wmilib/tools"
 )
 
 type (
