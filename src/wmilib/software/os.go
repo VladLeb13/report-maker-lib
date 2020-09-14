@@ -18,6 +18,7 @@ type (
 		InstallDate    string
 		OSArchitecture string
 		Version        string
+		Name           string
 	}
 
 	win32_ComputerSystem struct {

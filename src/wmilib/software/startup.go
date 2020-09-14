@@ -10,10 +10,11 @@ type Startup struct {
 }
 
 type win32_StartupCommand struct {
-	Caption string
-	Command string
-	User    string
-	Name    string
+	Caption  string
+	Command  string
+	User     string
+	Name     string
+	Location string
 }
 
 func (startup *Startup) Get() {

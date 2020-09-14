@@ -15,6 +15,8 @@ type (
 		InterfaceType string
 		Size          uint64
 		Partitions    uint32
+		Model         string
+		Name          string
 	}
 )
 

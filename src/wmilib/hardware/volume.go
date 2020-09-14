@@ -6,21 +6,22 @@ import (
 )
 
 type Volume struct {
-	Partitions []win32_Volume
+	Disks []win32_LogicalDisk
 }
 
-type win32_Volume struct {
-	Name       string
-	Capacity   uint32
-	FreeSpace  uint32
-	Label      string
-	FileSystem string
-	DeviceID   string
-	Automount  bool
+type win32_LogicalDisk struct {
+	Caption     string
+	Description string
+	DeviceID    string
+	FileSystem  string
+	FreeSpace   uint64
+	Name        string
+	Size        string
+	VolumeName  string
 }
 
 func (volume *Volume) Get() {
-	if err := tools.ExecuteQuery(&volume.Partitions, ""); err != nil {
+	if err := tools.ExecuteQuery(&volume.Disks, ""); err != nil {
 		log.Fatal(err)
 	}
 }

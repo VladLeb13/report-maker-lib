@@ -110,6 +110,11 @@ func TestGetRAM(t *testing.T) {
 		log.Println("DeviceLocator: ", v.DeviceLocator)
 		log.Println("Manufacturer: ", v.Manufacturer)
 		log.Println("PartNumber: ", v.PartNumber)
+		log.Println("Speed: ", v.Speed)
+		log.Println("Model: ", v.Model)
+		log.Println("Name: ", v.Name)
+		log.Println("FormFactor: ", v.FormFactor)
+		log.Println("OtherIdentifyingInfo: ", v.OtherIdentifyingInfo)
 	}
 }
 
@@ -123,6 +128,8 @@ func TestGetHDD(t *testing.T) {
 		log.Println("Partitions: ", v.Partitions)
 		log.Println("SerialNumber: ", v.SerialNumber)
 		log.Println("Size: ", v.Size)
+		log.Println("Model: ", v.Model)
+		log.Println("Name: ", v.Name)
 
 	}
 }
@@ -132,15 +139,16 @@ func TestGetVolume(t *testing.T) {
 	volume.Get()
 
 	log.Println("===== volume  =====")
-	for _, v := range volume.Partitions {
+	for _, v := range volume.Disks {
 		log.Println("===== volume  =====")
-		log.Println("Capacity: ", v.Capacity)
+		log.Println("Caption: ", v.Caption)
+		log.Println("Description: ", v.Description)
+		log.Println("DeviceID: ", v.DeviceID)
 		log.Println("FileSystem: ", v.FileSystem)
 		log.Println("FreeSpace: ", v.FreeSpace)
-		log.Println("Label: ", v.Label)
 		log.Println("Name: ", v.Name)
-		log.Println("DeviceID: ", v.DeviceID)
-		log.Println("Automount: ", v.Automount)
+		log.Println("Size: ", v.Size)
+		log.Println("VolumeName: ", v.VolumeName)
 
 	}
 
@@ -185,6 +193,7 @@ func TestGetOS(t *testing.T) {
 		fmt.Println("OSArchitecture: ", v.OSArchitecture)
 		fmt.Println("SerialNumber: ", v.SerialNumber)
 		fmt.Println("Version: ", v.Version)
+		fmt.Println("Name: ", v.Name)
 	}
 }
 
@@ -212,6 +221,7 @@ func TestGetStartup(t *testing.T) {
 		fmt.Println("Command: ", v.Command)
 		fmt.Println("User: ", v.User)
 		fmt.Println("Name: ", v.Name)
+		fmt.Println("Location: ", v.Location)
 	}
 }
 
