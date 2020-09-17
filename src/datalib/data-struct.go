@@ -2,15 +2,15 @@ package datalib
 
 type (
 	Hardware struct {
-		CPU     []cpu    `json:"cpu_list"`
-		Board   board    `json:"board"`
-		HDDs    []hdd    `json:"hdd_list"`
-		Volumes []volume `json:"volumes_list"`
-		NICs    []nic    `json:"nic_list"`
-		RAMs    []ram    `json:"ram_list"`
+		CPU     []CPU    `json:"cpu_list"`
+		Board   Board    `json:"board"`
+		HDDs    []HDD    `json:"hdd_list"`
+		Volumes []Volume `json:"volumes_list"`
+		NICs    []NIC    `json:"nic_list"`
+		RAMs    []RAM    `json:"ram_list"`
 	}
 
-	cpu struct {
+	CPU struct {
 		Manufacturer  string `json:"manufacturer"`
 		Name          string `json:"name"`
 		MaxClockSpeed uint32 `json:"speed"`
@@ -20,21 +20,21 @@ type (
 		Description   string `json:"description"`
 	}
 
-	board struct {
+	Board struct {
 		Manufacturer string `json:"manufacturer"`
 		Model        string `json:"model"`
 		Product      string `json:"product"`
 		PartNumber   string `json:"partNumber"`
 		SerialNumber string `json:"serialNumber"`
 		Version      string `json:"version"`
-		BIOS         bios   `json:"bios"`
+		BIOS         BIOS   `json:"bios"`
 	}
-	bios struct {
+	BIOS struct {
 		Manufacturer string `json:"manufacturer"`
 		Name         string `json:"name"`
 		Version      string `json:"version"`
 	}
-	hdd struct {
+	HDD struct {
 		SerialNumber  string `json:"serialNumber"`
 		InterfaceType string `json:"interfaceType"`
 		Size          uint64 `json:"size"`
@@ -42,7 +42,7 @@ type (
 		Model         string `json:"model"`
 		Name          string `json:"name"`
 	}
-	volume struct {
+	Volume struct {
 		Caption     string `json:"caption"`
 		Description string `json:"description"`
 		DeviceID    string `json:"deviceID"`
@@ -52,7 +52,7 @@ type (
 		Size        string `json:"size"`
 		VolumeName  string `json:"volumeName"`
 	}
-	nic struct {
+	NIC struct {
 		Description          string   `json:"description"`
 		DHCPEnabled          bool     `json:"dhcpEnabled"`
 		DHCPServer           string   `json:"dhcpServer"`
@@ -60,7 +60,7 @@ type (
 		DefaultIPGateway     []string `json:"defaultIPGateway_list"`
 		DNSServerSearchOrder []string `json:"dnsServerSearchOrderlist"`
 	}
-	ram struct {
+	RAM struct {
 		Capacity             uint64 `json:"capacity"`
 		Speed                uint32 `json:"speed"`
 		DeviceLocator        string `json:"deviceLocator"`
@@ -75,14 +75,14 @@ type (
 
 type (
 	Software struct {
-		OS       os        `json:"os"`
-		Programs []program `json:"programs_list"`
-		Updates  []update  `json:"updates_list"`
-		Startup  []startup `json:"startup_list"`
-		Shared   []shared  `json:"shared_list"`
+		OS       OS        `json:"os"`
+		Programs []Program `json:"programs_list"`
+		Updates  []Update  `json:"updates_list"`
+		Startup  []Startup `json:"startup_list"`
+		Shared   []Shared  `json:"shared_list"`
 	}
 
-	os struct {
+	OS struct {
 		Caption        string `json:"caption"`
 		BuildNumber    string `json:"buildNumber"`
 		SerialNumber   string `json:"serialNumber"`
@@ -93,7 +93,7 @@ type (
 		Domain         string `json:"domain"`
 		UserName       string `json:"userName"`
 	}
-	program struct {
+	Program struct {
 		Name            string `json:"name"`
 		Caption         string `json:"caption"`
 		Description     string `json:"description"`
@@ -104,7 +104,7 @@ type (
 		Vendor          string `json:"vendor"`
 		Version         string `json:"version"`
 	}
-	update struct {
+	Update struct {
 		HotFixID    string `json:"hotFixID"`
 		Description string `json:"description"`
 		InstalledBy string `json:"installedBy"`
@@ -113,14 +113,14 @@ type (
 		Status      string `json:"status"`
 		Name        string `json:"name"`
 	}
-	startup struct {
+	Startup struct {
 		Caption  string `json:"caption"`
 		Command  string `json:"command"`
 		User     string `json:"user"`
 		Name     string `json:"name"`
 		Location string `json:"location"`
 	}
-	shared struct {
+	Shared struct {
 		Name        string `json:"name"`
 		Path        string `json:"path"`
 		Description string `json:"description"`
@@ -131,17 +131,17 @@ type (
 
 type (
 	Perfomance struct {
-		CPU       []perf_cpu     `json:"cpu"`
-		Processes []perf_process `json:"processes"`
-		HDD       []perf_hdd     `json:"hdd"`
-		RAM       []perf_ram     `json:"ram"`
+		CPU       []Perf_cpu     `json:"cpu"`
+		Processes []Perf_process `json:"processes"`
+		HDD       []Perf_hdd     `json:"hdd"`
+		RAM       []Perf_ram     `json:"ram"`
 	}
-	perf_cpu struct {
+	Perf_cpu struct {
 		PercentProcessorPerformance uint64 `json:"percentProcessorPerformance"`
 		PercentProcessorUtility     uint64 `json:"percentProcessorUtility"`
 		ProcessorFrequency          uint64 `json:"processorFrequency"`
 	}
-	perf_process struct {
+	Perf_process struct {
 		IOReadOperationsPersec  uint64 `json:"ioReadOperationsPersec"`
 		IOWriteOperationsPersec uint64 `json:"ioWriteOperationsPersec"`
 		Name                    string `json:"name"`
@@ -150,14 +150,14 @@ type (
 		VirtualBytesPeak        uint64 `json:"virtualBytesPeak"`
 		IDProcess               uint32 `json:"idProcess"`
 	}
-	perf_hdd struct {
+	Perf_hdd struct {
 		PercentDiskTime       uint64 `json:"percentDiskTime"`
 		DiskWriteBytesPersec  uint64 `json:"diskWriteBytesPersec"`
 		DiskReadBytesPersec   uint64 `json:"diskReadBytesPersec"`
 		AvgDisksecPerTransfer uint32 `json:"avgDisksecPerTransfer"`
 		AvgDiskQueueLength    uint64 `json:"avgDiskQueueLength"`
 	}
-	perf_ram struct {
+	Perf_ram struct {
 		PercentCommittedBytesInUse uint64 `json:"percentCommittedBytesInUse"`
 		AvailableMBytes            uint64 `json:"availableMBytes"`
 	}
@@ -165,9 +165,9 @@ type (
 
 type (
 	Events struct {
-		List []event `json:"events"`
+		List []Event `json:"events"`
 	}
-	event struct {
+	Event struct {
 		User           string  `json:"user"`
 		LogFile        string  `json:"logFile"`
 		Message        string  `json:"message"`
