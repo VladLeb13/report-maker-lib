@@ -1,6 +1,12 @@
 package datalib
 
 type (
+	Report struct {
+		Hardware   Hardware   `json:"hardware"`
+		Software   Software   `json:"software"`
+		Perfomance Perfomance `json:"perfomance"`
+		Events     Events     `json:"evens"`
+	}
 	Hardware struct {
 		CPUs    []CPU    `json:"cpu_list"`
 		Board   Board    `json:"board"`
