@@ -2,7 +2,7 @@ package datalib
 
 type (
 	Hardware struct {
-		CPU     []CPU    `json:"cpu_list"`
+		CPUs    []CPU    `json:"cpu_list"`
 		Board   Board    `json:"board"`
 		HDDs    []HDD    `json:"hdd_list"`
 		Volumes []Volume `json:"volumes_list"`
