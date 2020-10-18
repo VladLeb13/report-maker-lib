@@ -19,7 +19,6 @@ type (
 		Message        string
 		CategoryString string
 		ComputerName   string
-		Data           []uint8
 		SourceName     string
 		TimeWritten    string
 	}
