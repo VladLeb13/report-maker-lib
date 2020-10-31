@@ -293,15 +293,6 @@ func TestGetEvent(t *testing.T) {
 
 func TestGetPerfomance(t *testing.T) {
 
-	perfRAM := new(perfomance.RAM)
-	perfRAM.Get()
-
-	log.Println("==== perf_mem ====")
-	for _, v := range perfRAM.Data {
-		fmt.Println(v.AvailableMBytes)            //доступно
-		fmt.Println(v.PercentCommittedBytesInUse) //процентов использованно
-	}
-
 	perfCPU := new(perfomance.CPU)
 	perfCPU.Get()
 	log.Println("==== perf_processor ====")
@@ -309,6 +300,15 @@ func TestGetPerfomance(t *testing.T) {
 		fmt.Println(v.PercentProcessorUtility) //исп проца
 		fmt.Println(v.ProcessorFrequency)
 		fmt.Println(v.PercentProcessorPerformance)
+	}
+
+	perfRAM := new(perfomance.RAM)
+	perfRAM.Get()
+
+	log.Println("==== perf_mem ====")
+	for _, v := range perfRAM.Data {
+		fmt.Println(v.AvailableMBytes)            //доступно
+		fmt.Println(v.PercentCommittedBytesInUse) //процентов использованно
 	}
 
 	perfHDD := new(perfomance.HDD)

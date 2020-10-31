@@ -58,6 +58,11 @@ func getMonthAgo(now time.Time) (time.Time, error) {
 
 	var stringDay string
 	day := int(now.Day())
+
+	if (day == 31) || (day == 29) {
+		day--
+	}
+
 	if day < 10 {
 		stringDay = "0" + strconv.Itoa(day)
 	} else {
