@@ -6,10 +6,11 @@ import (
 	"testing"
 	"time"
 
+	"github.com/VladLeb13/report-maker-lib/src/wmilib/software"
+
 	"github.com/VladLeb13/report-maker-lib/src/wmilib/events"
 	"github.com/VladLeb13/report-maker-lib/src/wmilib/hardware"
 	"github.com/VladLeb13/report-maker-lib/src/wmilib/perfomance"
-	"github.com/VladLeb13/report-maker-lib/src/wmilib/software"
 )
 
 func TestGeneral(t *testing.T) {
@@ -278,7 +279,6 @@ func TestGetEvent(t *testing.T) {
 		fmt.Println("Message: ", v.Message)
 		fmt.Println("CategoryString: ", v.CategoryString)
 		fmt.Println("ComputerName: ", v.ComputerName)
-		fmt.Println("Data: ", v.Data)
 		fmt.Println("SourceName: ", v.SourceName)
 		fmt.Println("TimeWritten: ", v.TimeWritten)
 	}

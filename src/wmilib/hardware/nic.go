@@ -3,7 +3,7 @@ package hardware
 import (
 	"log"
 
-	"github.com/VladLeb13/report-maker-lib/src/wmilib/tools"
+	"github.com/VladLeb13/report-maker-lib/wmilib/tools"
 )
 
 type NIC struct {
