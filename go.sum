@@ -1,4 +1,7 @@
 github.com/StackExchange/wmi v0.0.0-20190523213315-cbe66965904d h1:G0m3OIz70MZUWq3EgK3CesDbo8upS2Vm9/P3FtgI+Jk=
 github.com/StackExchange/wmi v0.0.0-20190523213315-cbe66965904d/go.mod h1:3eOhrUMpNV+6aFIbp5/iudMxNCF27Vw2OZgy4xEx0Fg=
+github.com/VladLeb13/report-maker-lib/src v0.0.0-20201101194056-f1df8dcac78e h1:lWbB06fbd2r0adAaOBiWvTYFnAo5aIZ1a5lOt/n/9Bk=
+github.com/VladLeb13/report-maker-lib/src/wmilib v0.0.0-20201101131031-47c8fa077c7e h1:NddE5ww5Y8CCfG/XSyl+10x1B6Mby51LHxhL1ddxlHM=
+github.com/VladLeb13/report-maker-lib/src/wmilib v0.0.0-20201101131031-47c8fa077c7e/go.mod h1:TjNJ1clBOon0CTAU0VQkQCiXo69ocHraZ1/QfntFxrI=
 github.com/go-ole/go-ole v1.2.4 h1:nNBDSCOigTSiarFpYE9J/KtEA1IOW4CNeqT9TQDqCxI=
 github.com/go-ole/go-ole v1.2.4/go.mod h1:XCwSNxSkXRo4vlyPy93sltvi/qJq0jqQhjqQNIwKuxM=
