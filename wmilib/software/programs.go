@@ -3,7 +3,7 @@ package software
 import (
 	"log"
 
-	"github.com/VladLeb13/report-maker-lib/wmilib/tools"
+	"report-maker-lib/wmilib/tools"
 )
 
 type Programs struct {

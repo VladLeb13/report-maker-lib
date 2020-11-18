@@ -5,7 +5,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/VladLeb13/report-maker-lib/wmilib/tools"
+	"report-maker-lib/wmilib/tools"
 )
 
 type (
