@@ -1,4 +1,4 @@
-module report-maker-lib
+module github.com/VladLeb13/report-maker-lib
 
 go 1.14
 

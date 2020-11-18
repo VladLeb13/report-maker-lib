@@ -6,11 +6,11 @@ import (
 	"testing"
 	"time"
 
-	"report-maker-lib/wmilib/software"
+	"github.com/VladLeb13/report-maker-lib/wmilib/software"
 
-	"report-maker-lib/wmilib/events"
-	"report-maker-lib/wmilib/hardware"
-	"report-maker-lib/wmilib/perfomance"
+	"github.com/VladLeb13/report-maker-lib/wmilib/events"
+	"github.com/VladLeb13/report-maker-lib/wmilib/hardware"
+	"github.com/VladLeb13/report-maker-lib/wmilib/perfomance"
 )
 
 func TestGeneral(t *testing.T) {
