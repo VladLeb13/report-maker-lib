@@ -111,7 +111,6 @@ func TestGetRAM(t *testing.T) {
 		log.Println("Manufacturer: ", v.Manufacturer)
 		log.Println("PartNumber: ", v.PartNumber)
 		log.Println("Speed: ", v.Speed)
-		log.Println("Model: ", v.Model)
 		log.Println("Name: ", v.Name)
 		log.Println("FormFactor: ", v.FormFactor)
 	}
@@ -244,7 +243,6 @@ func TestGetPrograms(t *testing.T) {
 	log.Println("==== programs ====")
 	for i, v := range prog.List {
 		fmt.Println("==== programs position - ", i)
-		fmt.Println("Description: ", v.Description)
 		fmt.Println("InstallDate: ", v.InstallDate)
 		fmt.Println("InstallLocation: ", v.InstallLocation)
 		fmt.Println("Name: ", v.Name)

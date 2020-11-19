@@ -70,7 +70,6 @@ type (
 		DeviceLocator string `json:"deviceLocator" name:"Шина"`
 		PartNumber    string `json:"partNumber" name:"Номер"`
 		Manufacturer  string `json:"manufacturer" name:"Производитель"`
-		Model         string `json:"model" name:"Модель"`
 		Name          string `json:"name" name:"Наименование"`
 		FormFactor    uint16 `json:"formFactor" name:"Форм фактор"`
 	}
@@ -98,7 +97,6 @@ type (
 	}
 	Program struct {
 		Name            string `json:"name" name:"Наименование"`
-		Description     string `json:"description" name:"Описание"`
 		InstallDate     string `json:"installDate" name:"Дата установки"`
 		InstallLocation string `json:"installLocation" name:"Каталог установки"`
 		Vendor          string `json:"vendor" name:"Производитель"`

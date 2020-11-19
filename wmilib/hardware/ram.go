@@ -17,7 +17,6 @@ type (
 		DeviceLocator string
 		PartNumber    string
 		Manufacturer  string
-		Model         string
 		Name          string
 		FormFactor    uint16
 	}
