@@ -12,12 +12,9 @@ type Programs struct {
 
 type win32_Product struct {
 	Name            string
-	Caption         string
 	Description     string
 	InstallDate     string
 	InstallLocation string
-	RegOwner        string
-	RegCompany      string
 	Vendor          string
 	Version         string
 }

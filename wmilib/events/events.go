@@ -14,13 +14,10 @@ type (
 	}
 
 	win32_NTLogEvent struct {
-		User           string
-		LogFile        string
-		Message        string
-		CategoryString string
-		ComputerName   string
-		SourceName     string
-		TimeWritten    string
+		User        string
+		LogFile     string
+		Message     string
+		TimeWritten string
 	}
 )
 

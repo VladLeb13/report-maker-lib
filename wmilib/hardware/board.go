@@ -14,9 +14,7 @@ type (
 
 	win32_BaseBoard struct {
 		Manufacturer string
-		Model        string
 		Product      string
-		PartNumber   string
 		SerialNumber string
 		Version      string
 	}

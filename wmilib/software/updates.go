@@ -16,9 +16,6 @@ type (
 		Description string
 		InstalledBy string
 		InstalledOn string
-		FixComments string
-		Status      string
-		Name        string
 	}
 )
 

@@ -86,8 +86,6 @@ func TestGetMatherboard(t *testing.T) {
 	log.Println("===== baseboard =====")
 	for _, v := range board.Сomponents {
 		log.Println("Manufacturer: ", v.Manufacturer)
-		log.Println("Model: ", v.Model)
-		log.Println("PartNumber: ", v.PartNumber)
 		log.Println("Product: ", v.Product)
 		log.Println("SerialNumber: ", v.SerialNumber)
 		log.Println("Version: ", v.Version)
@@ -116,7 +114,6 @@ func TestGetRAM(t *testing.T) {
 		log.Println("Model: ", v.Model)
 		log.Println("Name: ", v.Name)
 		log.Println("FormFactor: ", v.FormFactor)
-		log.Println("OtherIdentifyingInfo: ", v.OtherIdentifyingInfo)
 	}
 }
 
@@ -235,12 +232,9 @@ func TestGetUpdate(t *testing.T) {
 	for i, v := range updates.List {
 		fmt.Println("==== update position - ", i)
 		fmt.Println("Description: ", v.Description)
-		fmt.Println("FixComments: ", v.FixComments)
 		fmt.Println("HotFixID: ", v.HotFixID)
 		fmt.Println("InstalledBy: ", v.InstalledBy)
 		fmt.Println("InstalledOn: ", v.InstalledOn)
-		fmt.Println("Name: ", v.Name)
-		fmt.Println("Status: ", v.Status)
 	}
 }
 
@@ -250,13 +244,10 @@ func TestGetPrograms(t *testing.T) {
 	log.Println("==== programs ====")
 	for i, v := range prog.List {
 		fmt.Println("==== programs position - ", i)
-		fmt.Println("Caption: ", v.Caption)
 		fmt.Println("Description: ", v.Description)
 		fmt.Println("InstallDate: ", v.InstallDate)
 		fmt.Println("InstallLocation: ", v.InstallLocation)
 		fmt.Println("Name: ", v.Name)
-		fmt.Println("RegCompany: ", v.RegCompany)
-		fmt.Println("RegOwner: ", v.RegOwner)
 		fmt.Println("Vendor: ", v.Vendor)
 		fmt.Println("Version: ", v.Version)
 	}
@@ -277,9 +268,6 @@ func TestGetEvent(t *testing.T) {
 		fmt.Println("User: ", v.User)
 		fmt.Println("LogFile: ", v.LogFile)
 		fmt.Println("Message: ", v.Message)
-		fmt.Println("CategoryString: ", v.CategoryString)
-		fmt.Println("ComputerName: ", v.ComputerName)
-		fmt.Println("SourceName: ", v.SourceName)
 		fmt.Println("TimeWritten: ", v.TimeWritten)
 	}
 

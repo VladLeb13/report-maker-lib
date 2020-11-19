@@ -12,15 +12,14 @@ type (
 	}
 
 	win32_PhysicalMemory struct {
-		Capacity             uint64
-		Speed                uint32
-		DeviceLocator        string
-		PartNumber           string
-		Manufacturer         string
-		Model                string
-		Name                 string
-		FormFactor           uint16
-		OtherIdentifyingInfo string
+		Capacity      uint64
+		Speed         uint32
+		DeviceLocator string
+		PartNumber    string
+		Manufacturer  string
+		Model         string
+		Name          string
+		FormFactor    uint16
 	}
 )
 

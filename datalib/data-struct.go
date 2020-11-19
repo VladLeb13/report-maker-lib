@@ -28,10 +28,8 @@ type (
 
 	Board struct {
 		Manufacturer string `json:"manufacturer" name:"Производитель"`
-		Model        string `json:"model" name:"Модель"`
 		Product      string `json:"product" name:"Название продукта"`
-		PartNumber   string `json:"partNumber" name:"Номер партии"`
-		SerialNumber string `json:"serialNumber" name:""Серийный номер`
+		SerialNumber string `json:"serialNumber" name:"Серийный номер"`
 		Version      string `json:"version" name:"Версия"`
 		BIOS         BIOS   `json:"bios"`
 	}
@@ -67,15 +65,14 @@ type (
 		DNSServerSearchOrder []string `json:"dnsServerSearchOrderlist" name:"DNS"`
 	}
 	RAM struct {
-		Capacity             uint64 `json:"capacity" name:"Объем"`
-		Speed                uint32 `json:"speed" name:"Скорость"`
-		DeviceLocator        string `json:"deviceLocator" name:"Шина"`
-		PartNumber           string `json:"partNumber" name:"Номер"`
-		Manufacturer         string `json:"manufacturer" name:"Производитель"`
-		Model                string `json:"model" name:"Модель"`
-		Name                 string `json:"name" name:"Наименование"`
-		FormFactor           uint16 `json:"formFactor" name:"Форм фактор"`
-		OtherIdentifyingInfo string `json:"otherIdentifyingInfo" name:"Прочее"`
+		Capacity      uint64 `json:"capacity" name:"Объем"`
+		Speed         uint32 `json:"speed" name:"Скорость"`
+		DeviceLocator string `json:"deviceLocator" name:"Шина"`
+		PartNumber    string `json:"partNumber" name:"Номер"`
+		Manufacturer  string `json:"manufacturer" name:"Производитель"`
+		Model         string `json:"model" name:"Модель"`
+		Name          string `json:"name" name:"Наименование"`
+		FormFactor    uint16 `json:"formFactor" name:"Форм фактор"`
 	}
 )
 
@@ -101,12 +98,9 @@ type (
 	}
 	Program struct {
 		Name            string `json:"name" name:"Наименование"`
-		Caption         string `json:"caption" name:"Подпись"`
 		Description     string `json:"description" name:"Описание"`
 		InstallDate     string `json:"installDate" name:"Дата установки"`
 		InstallLocation string `json:"installLocation" name:"Каталог установки"`
-		RegOwner        string `json:"regOwner" name:"Владелец"`
-		RegCompany      string `json:"regCompany" name:"Компания"`
 		Vendor          string `json:"vendor" name:"Производитель"`
 		Version         string `json:"version" name:"Версия"`
 	}
@@ -115,9 +109,6 @@ type (
 		Description string `json:"description" name:"Описание"`
 		InstalledBy string `json:"installedBy" name:"Пользователь"`
 		InstalledOn string `json:"installedOn" name:"Дата установки"`
-		FixComments string `json:"fixComments" name:"Коментарий"`
-		Status      string `json:"status" name:"Статус"`
-		Name        string `json:"name" name:"Наименование"`
 	}
 	Startup struct {
 		Caption  string `json:"caption" name:"Название"`
@@ -174,13 +165,10 @@ type (
 		List []Event `json:"events"`
 	}
 	Event struct {
-		User           string  `json:"user" name:"Пользователь"`
-		LogFile        string  `json:"logFile" name:"Файл лога"`
-		Message        string  `json:"message" name:"Сообщение"`
-		CategoryString string  `json:"categoryString" name:"категория"`
-		ComputerName   string  `json:"computerName" name:"Имя ПК"`
-		Data           []uint8 `json:"data" name:"Данные"`
-		SourceName     string  `json:"sourceName" name:"Источник"`
-		TimeWritten    string  `json:"timeWritten" name:"Время записи"`
+		User        string  `json:"user" name:"Пользователь"`
+		LogFile     string  `json:"logFile" name:"Файл лога"`
+		Message     string  `json:"message" name:"Сообщение"`
+		Data        []uint8 `json:"data" name:"Данные"`
+		TimeWritten string  `json:"timeWritten" name:"Время записи"`
 	}
 )
