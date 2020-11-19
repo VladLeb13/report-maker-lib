@@ -163,10 +163,9 @@ type (
 		List []Event `json:"events"`
 	}
 	Event struct {
-		User        string  `json:"user" name:"Пользователь"`
-		LogFile     string  `json:"logFile" name:"Файл лога"`
-		Message     string  `json:"message" name:"Сообщение"`
-		Data        []uint8 `json:"data" name:"Данные"`
-		TimeWritten string  `json:"timeWritten" name:"Время записи"`
+		User        string `json:"user" name:"Пользователь"`
+		LogFile     string `json:"logFile" name:"Файл лога"`
+		Message     string `json:"message" name:"Сообщение"`
+		TimeWritten string `json:"timeWritten" name:"Время записи"`
 	}
 )
