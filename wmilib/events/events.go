@@ -28,20 +28,20 @@ func (events *Events) Get() {
 
 func queryСondition() string {
 	now := time.Now().UTC()
-	twoWeekAgo := getTwoWeekAgo(now)
+	fourDayAgo := getFourDayAgo(now)
 
 	layout := "20060102150405.898655-000"
 	stringNow := now.Format(layout)
-	stringTwoWeekAgo := twoWeekAgo.Format(layout)
+	stringTwoWeekAgo := fourDayAgo.Format(layout)
 
 	reqСondition := "WHERE TimeWritten >= '" + stringTwoWeekAgo + "' AND TimeWritten <= '" + stringNow + "'"
 
 	return reqСondition
 }
 
-func getTwoWeekAgo(now time.Time) time.Time {
+func getFourDayAgo(now time.Time) time.Time {
 
-	timestamp := now.Unix() - 604800*2
+	timestamp := now.Unix() - 86400*4
 	ago := time.Unix(timestamp, 0)
 
 	return ago
